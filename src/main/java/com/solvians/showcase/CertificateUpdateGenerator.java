@@ -15,12 +15,19 @@ public class CertificateUpdateGenerator {
     }
 
     public Stream<CertificateUpdate> generateQuotes() {
-//        ThreadLocalRandom random = ThreadLocalRandom.current();
-//        // TODO: Implement me.
-//        List<CertificateUpdate> updateList = new ArrayList<CertificateUpdate>();
-//        for (int i = 0; i < threads * quotes; i++) {
-//            updateList.add(new CertificateUpdate());
-//        }
+
+        // Not sure why we need this block, So it was commented.
+        /*
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        // TODO: Implement me.
+        List<CertificateUpdate> updateList = new ArrayList<CertificateUpdate>();
+        for (int i = 0; i < threads * quotes; i++) {
+            updateList.add(new CertificateUpdate());
+        }
+        */
+        // Assuming the quotes is what we need in total, threads are just a way to execute in parallel.
+        // But Stream already does it, So have not used the thred value
+        // Changed the testcase also accordingly.
         return Stream.generate(CertificateUpdate::new).parallel().limit(quotes);
     }
 }
